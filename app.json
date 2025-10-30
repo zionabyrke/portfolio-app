@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name": "Project Portfolio",
+    "slug": "project-portfolio-expo",
+    "version": "1.0.0",
+    "scheme": "exp",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "sdkVersion": "48.0.0",
+    "orientation": "portrait",
+    "entryPoint": "node_modules/expo/AppEntry.js",
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
