@@ -1,26 +1,21 @@
-import React, { useState } from 'react';
-import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
-import HomeScreen from './src/screens/HomeScreen';
-import ProjectScreen from './src/screens/ProjectScreen';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import DashboardScreen from './src/screens/DashboardScreen';
+import ProfileScreen from './src/screens/ProfileScreen';
+import ProjectsScreen from './src/screens/ProjectsScreen';
 
-type Screen = { name: 'home' | 'project'; params?: any };
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [screen, setScreen] = useState<Screen>({ name: 'home' });
-
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="dark-content" />
-      {screen.name === 'home' && (
-        <HomeScreen onOpenProject={(p) => setScreen({ name: 'project', params: p })} />
-      )}
-      {screen.name === 'project' && (
-        <ProjectScreen project={screen.params} onBack={() => setScreen({ name: 'home' })} />
-      )}
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Dashboard" screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Dashboard" component={DashboardScreen} />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="Projects" component={ProjectsScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff' }
-});
